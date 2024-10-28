@@ -1,0 +1,24 @@
+
+
+Roles:
+
+
+//Restaurante
+ 
+	- Produtos (Gerenciamento de seus produtos cadastrados)
+	- Pedidos (Pedidos recebidos das empresas que optaram pelo restaurante)
+	- Vendas (Tela com relatório de vendas do restaurante, produtos que mais sairam ? )
+	- Perfil ( ? )
+
+//Empresa
+
+  - Restaurantes (Escolher um restaurante para disponibilizar cárdapio para os funcionários)
+  - Funcionários (Cadastrar os funcionários para que possam ter um login)
+  - Pedidos (Junta os pedidos dos funcionários em um pedido único para enviar ao restaurante)
+  - Perfil ( ? )
+
+//Funcionário
+
+  - Fazer pedido (definir )
+  - Restaurantes (sugerir restaurante para a empresa?)
+  - Perfil 
