@@ -10,7 +10,7 @@ export const theme = createTheme({
 			main: "#00FF00", // Cor secundária (verde, por exemplo)
 		},
 		background: {
-			default: "#f4f4f4", // Cor de fundo global
+			default: "#f6f2eb;", // Cor de fundo global
 		},
 		text: {
 			primary: "#1d1d1d", // Cor principal do texto

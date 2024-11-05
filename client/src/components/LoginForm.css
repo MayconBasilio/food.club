@@ -12,19 +12,19 @@ body {
 	padding: 0 1rem;
 }
 
-#loginForm{
+#loginForm {
 	display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  align-items: center;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 3px 6px 5px #0000000e;
-  padding: 2rem 1rem;
-  width: 100%;
-  max-width: 1000px;
-  height: 600px;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;
+	justify-content: space-around;
+	align-items: center;
+	background: #f6f2eb;
+	border-radius: 8px;
+	/* box-shadow: 3px 6px 5px #0000000e; */
+	padding: 2rem 1rem;
+	width: 100%;
+	max-width: 1000px;
+	height: 600px;
 	margin: 5rem auto;
 }
 
@@ -32,10 +32,10 @@ body {
 	height: 400px;
 }
 #btn-cadastro {
-  border: 1px solid #bb3301;
-  background: #fff;
-  color: #bb3301;
-  font-weight: bold;
+	border: 1px solid #bb3301;
+	background: #fff;
+	color: #bb3301;
+	font-weight: bold;
 }
 
 .form-row {
@@ -68,31 +68,31 @@ input {
 	opacity: 0.8;
 }
 
-@media (max-width: 800px){
-  #loginForm{
-    height: auto;
-  }
+@media (max-width: 800px) {
+	#loginForm {
+		height: auto;
+	}
 }
 @media (max-width: 430px) {
-  form {
-    width: 264px;
-  }
+	form {
+		width: 264px;
+	}
 
-  #loginForm{
-    height: auto;
-  }
+	#loginForm {
+		height: auto;
+	}
 
-  #loginForm .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	#loginForm .logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-  #loginForm .logo img{
-    height: 200px;
-  }
+	#loginForm .logo img {
+		height: 200px;
+	}
 
-  .basic-info-container h1 {
-    font-size: 24px;
-  }
+	.basic-info-container h1 {
+		font-size: 24px;
+	}
 }
