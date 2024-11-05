@@ -1,4 +1,4 @@
-import { Box, Button, Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "./InitialPage.css";
 import { HowItWorkCard } from "../../components/HowItWorkCard";
