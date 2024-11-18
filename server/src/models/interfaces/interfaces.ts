@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { Request } from "express";
 import { OrderStatus, UserType } from "../enums/enums";
 
 export interface ICompanyOrder {
@@ -47,13 +48,13 @@ export interface IEmployee extends IUser {
 	company: Types.ObjectId;
 	birthDate: Date;
 	weeklyOrders: {
-		Monday: Types.ObjectId[];
-		Tuesday: Types.ObjectId[];
-		Wednesday: Types.ObjectId[];
-		Thursday: Types.ObjectId[];
-		Friday: Types.ObjectId[];
-		Saturday: Types.ObjectId[];
-		Sunday: Types.ObjectId[];
+		Monday: Types.ObjectId;
+		Tuesday: Types.ObjectId;
+		Wednesday: Types.ObjectId;
+		Thursday: Types.ObjectId;
+		Friday: Types.ObjectId;
+		Saturday: Types.ObjectId;
+		Sunday: Types.ObjectId;
 	};
 }
 
@@ -83,4 +84,8 @@ export interface iJSONResponse {
 	success: boolean;
 	message: string;
 	data: any;
+}
+
+export interface RequestWithUserId extends Request {
+	userId?: string;
 }

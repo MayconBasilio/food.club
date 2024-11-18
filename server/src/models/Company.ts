@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { ICompany } from "./interfaces/interfaces";
 import { User } from "./User";
+import { ICompany } from "./interfaces/interfaces";
 
 const CompanySchema = new mongoose.Schema({
 	name: { type: String, required: true },
@@ -17,6 +17,7 @@ const CompanySchema = new mongoose.Schema({
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Employee",
+			default: [],
 		},
 	],
 });

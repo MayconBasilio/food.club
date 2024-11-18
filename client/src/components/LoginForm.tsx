@@ -4,18 +4,23 @@ import "./LoginForm.css";
 import { Button } from "@mui/material";
 import GenericInput from "./GenericInput";
 import EmailInput from "./EmailInput";
-import logo from '../assets/Logo.svg'
+import logo from "../assets/Logo.svg";
+// import axios from "axios";
 
 const LoginForm = () => {
 	const [password, setPassword] = useState<string>("");
 
-	function handlePasswordChange(setPassword: React.Dispatch<React.SetStateAction<string>>) {
+	function handlePasswordChange(
+		setPassword: React.Dispatch<React.SetStateAction<string>>
+	) {
 		return (event: React.ChangeEvent<HTMLInputElement>) => {
-			const value = event.target.value.replace(/\s/g, ''); // Remove espaços
+			const value = event.target.value.replace(/\s/g, ""); // Remove espaços
 			setPassword(value);
 		};
 	}
-	function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
+	async function handleSubmit(
+		event: React.FormEvent<HTMLFormElement>
+	): Promise<void> {
 		event.preventDefault();
 
 		const formData = new FormData(event.currentTarget);
@@ -24,8 +29,11 @@ const LoginForm = () => {
 			password: formData.get("password"),
 		};
 
+		// const response = await axios.get("http://localhost:5000/api/auth/check-auth", {
+		// 	withCredentials: true,
+		// });
+
 		console.log(data);
-		//aqui deve ser feita a chamada do axios
 	}
 
 	return (
@@ -49,12 +57,17 @@ const LoginForm = () => {
 					name="password"
 					value={password}
 					onChange={handlePasswordChange(setPassword)}
-									/>
+				/>
 				<Button variant="contained" color="primary" type="submit">
 					Entrar
 				</Button>
 
-				<Button href="/cadastro" id="btn-cadastro" variant="contained" color="inherit" >
+				<Button
+					href="/cadastro"
+					id="btn-cadastro"
+					variant="contained"
+					color="inherit"
+				>
 					Cadastrar
 				</Button>
 				<span>Esqueci a senha</span>

@@ -1,4 +1,10 @@
 import { UserType } from "../models/enums/enums";
+import {
+	ICompany,
+	IEmployee,
+	IRestaurant,
+} from "../models/interfaces/interfaces";
+import { Restaurant } from "./../models/Restaurant";
 
 export const isEmail = (email: string) => {
 	const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

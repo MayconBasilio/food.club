@@ -1,6 +1,6 @@
-import mongoose, { Collection, Schema } from "mongoose";
-import { IRestaurant } from "./interfaces/interfaces";
+import mongoose, { Schema } from "mongoose";
 import { User } from "./User";
+import { IRestaurant } from "./interfaces/interfaces";
 import { UserType } from "./enums/enums";
 
 const RestaurantSchema = new Schema({
