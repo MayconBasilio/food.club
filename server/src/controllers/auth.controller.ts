@@ -10,12 +10,12 @@ import {
 	IRestaurant,
 } from "../models/interfaces/interfaces";
 import { Restaurant } from "../models/Restaurant";
-import { validateEmployeeData, validateUserData } from "../utils/validations";
+import { validateEmployeeData, validateUserData } from "../../src/utils/validations";
 import { UserType } from "../models/enums/enums";
 import { Company } from "../models/Company";
 import { Employee } from "../models/Employee";
 import { initialUSerToken as setInitialUserToken } from "../middleware/verifyToken";
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie";
+import { generateTokenAndSetCookie } from "../../src/utils/generateTokenAndSetCookie";
 
 //#endregion
 
