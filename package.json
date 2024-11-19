@@ -1,5 +1,12 @@
 {
   "devDependencies": {
     "@types/cors": "^2.8.17"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^8.8.2"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
