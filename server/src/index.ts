@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { connectDB } from "./db/connectDb";
 
 import authRoutes from "./routes/auth.routes";
+import companyRoutes from "./routes/company.routes";
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ const PORT = process.env.PORT || 3000;
 
 //Rotas
 app.use("/api/auth", authRoutes);
+app.use("/api/auth", companyRoutes);
 
 export const startServer = async () => {
 	try {

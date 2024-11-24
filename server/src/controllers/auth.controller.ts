@@ -10,12 +10,11 @@ import {
 	IRestaurant,
 } from "../models/interfaces/interfaces";
 import { Restaurant } from "../models/Restaurant";
-import { validateEmployeeData, validateUserData } from "../../src/utils/validations";
+import { validateEmployeeData, validateUserData } from "../utils/validations";
 import { UserType } from "../models/enums/enums";
-import { Company } from "../models/Company";
 import { Employee } from "../models/Employee";
 import { initialUSerToken as setInitialUserToken } from "../middleware/verifyToken";
-import { generateTokenAndSetCookie } from "../../src/utils/generateTokenAndSetCookie";
+import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie";
 
 //#endregion
 
@@ -26,6 +25,7 @@ export const logout = async (req: Request, res: Response): Promise<any> => {
 
 export const login = async (req: Request, res: Response): Promise<any> => {
 	const { email, password } = req.body;
+
 	try {
 		if (!email || !password) {
 			return res
@@ -40,8 +40,6 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 				.status(404)
 				.json({ success: false, message: "Email ou senha inválido." });
 		}
-
-		console.log(user);
 
 		const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -157,12 +155,38 @@ export const checkAuth = async (req: Request, res: Response) => {
 	const user = await User.findById(decoded.userId);
 
 	if (!user) {
-		res.status(401).json({ message: "Unauthorized - invalid token" });
+		res.clearCookie("fctoken");
+		res
+			.status(401)
+			.json({ success: false, message: "Unauthorized - invalid token" });
 		return;
 	}
 
 	user.password = "";
 
-	res.status(200).json({ message: "Authorized", user });
+	res.status(200).json({ success: true, message: "Authorized", user: user });
 	return;
+};
+
+export const getIsEmailAvailable = async (
+	req: Request,
+	res: Response
+): Promise<void> => {
+	try {
+		const email = req.body.email;
+		const user = await User.findOne({ email });
+
+		if (user) {
+			res.status(400).json({ available: false, message: "Email já cadastrado." });
+			return;
+		} else {
+			res.status(200).json({ available: true, message: "Email disponível." });
+			return;
+		}
+	} catch (error) {
+		res
+			.status(500)
+			.json({ available: false, message: "Erro interno do servidor." });
+		return;
+	}
 };

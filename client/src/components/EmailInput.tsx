@@ -7,17 +7,19 @@ interface EmailInputProps {
   placeholder: string;
   labelText: string;
   required?: boolean;
+  value?: string; // Suporte para valor controlado
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // Suporte para mudança externa
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({
   name,
   placeholder,
   labelText,
+  value = "", // Valor inicial padrão
+  onChange, // Callback externo
 }) => {
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>(value);
   const [error, setError] = useState<string>("");
-
-  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -27,6 +29,11 @@ const EmailInput: React.FC<EmailInputProps> = ({
       setError("");
     } else {
       setError("E-mail inválido");
+    }
+
+    // Notifica o callback externo, se fornecido
+    if (onChange) {
+      onChange(event);
     }
   };
 

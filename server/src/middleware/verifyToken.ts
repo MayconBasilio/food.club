@@ -13,8 +13,9 @@ export const verifyToken = async (
 	next: NextFunction
 ): Promise<void> => {
 	try {
-		console.log(req.cookies);
 		const token = req.cookies.fctoken;
+
+		console.log("token no verifyToken", token);
 
 		if (!token) {
 			res.status(401).json({ message: "Unauthorized - no token provided" });

@@ -94,3 +94,42 @@ export const ratings = [
 		stars: 5,
 	},
 ];
+
+export const employeesFoto = [
+	{
+		img01: "../assets/img-employee/image 8.png"
+	},
+	{
+		img02: "../assets/img-employee/image 9.png"
+	},
+	{
+		img03: "../assets/img-employee/image 10.png"
+	},
+	{
+		img04: "../assets/img-employee/image 11.png"
+	},
+	{
+		img05: "../assets/img-employee/image 13.png"
+	},
+	{
+		img06: "../assets/img-employee/image 14.png"
+	},
+	{
+		img07: "../assets/img-employee/image 15.png"
+	},
+	{
+		img08: "../assets/img-employee/image 16.png"
+	},
+	{
+		img09: "../assets/img-employee/image 17.png"
+	},
+	{
+		img10: "../assets/img-employee/image 18.png"
+	},
+	{
+		img11: "../assets/img-employee/image 19.png"
+	},
+	{
+		img12: "../assets/img-employee/image 20.png"
+	}
+]

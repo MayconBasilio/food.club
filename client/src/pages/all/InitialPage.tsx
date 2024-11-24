@@ -21,7 +21,7 @@ const InitialPage = () => {
 					</h1>
 					<p>Conectando empresas e restaurantes sem perder a praticidade</p>
 					<div className="hero-btns-container">
-						<NavLink to={"/cadastro"} className=" nav-link entrar-btn">
+						<NavLink to={"/login"} className=" nav-link entrar-btn">
 							<Button variant="contained">Entrar</Button>
 						</NavLink>
 

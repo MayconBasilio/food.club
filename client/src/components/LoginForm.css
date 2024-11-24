@@ -1,15 +1,19 @@
 form {
 	display: flex;
 	flex-direction: column;
-	width: 90%;
+	width: 90% !important;
 	max-width: 400px;
 	position: absolute;
-
 	row-gap: 1rem;
 }
 
 body {
 	padding: 0 1rem;
+}
+
+.form-img {
+	display: flex;
+	justify-content: center;
 }
 
 #loginForm {
@@ -18,18 +22,46 @@ body {
 	flex-direction: row-reverse;
 	justify-content: space-around;
 	align-items: center;
-	background: #f6f2eb;
+	background: #ffffff;
 	border-radius: 8px;
 	/* box-shadow: 3px 6px 5px #0000000e; */
 	padding: 2rem 1rem;
 	width: 100%;
-	max-width: 1000px;
-	height: 600px;
-	margin: 5rem auto;
+	max-width: 500px;
+	height: 100vh;
+	flex-grow: 1;
 }
 
-#loginForm .logo img {
-	height: 400px;
+.imagem-fundo {
+	flex-grow: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.imagem-fundo img {
+	min-height: 100vh;
+	height: 100%;
+	position: fixed;
+	object-fit: cover;
+	object-position: right;
+	z-index: -1;
+	max-width: fit-content;
+	width: 100%;
+}
+
+.form-principal .form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-principal .error-message {
+	color: red;
+	width: auto;
+	text-align: end;
+}
+.form-principal p {
+	color: #949494;
 }
 #btn-cadastro {
 	border: 1px solid #bb3301;
@@ -68,31 +100,10 @@ input {
 	opacity: 0.8;
 }
 
-@media (max-width: 800px) {
-	#loginForm {
-		height: auto;
-	}
+.link-cadastro {
+	color: #949494;
 }
-@media (max-width: 430px) {
-	form {
-		width: 264px;
-	}
 
-	#loginForm {
-		height: auto;
-	}
-
-	#loginForm .logo {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	#loginForm .logo img {
-		height: 200px;
-	}
-
-	.basic-info-container h1 {
-		font-size: 24px;
-	}
+.link-cadastro a {
+	color: black;
 }

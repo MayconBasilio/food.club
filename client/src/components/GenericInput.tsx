@@ -11,6 +11,7 @@ interface GenericInputProps {
   helperText?: string; // Mensagem de ajuda ou erro
   value?: string; // Para controlar o valor do campo
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // Para controle de mudanças
+	disabled?: boolean;
 }
 
 const GenericInput = (props: GenericInputProps) => {
@@ -26,6 +27,7 @@ const GenericInput = (props: GenericInputProps) => {
       helperText={props.helperText} // Mensagem de ajuda ou erro
       value={props.value} // Controlando o valor
       onChange={props.onChange} // Capturando mudanças
+			disabled={props.disabled} // Propriedade para desabilitar o campo
 			slotProps={{
         htmlInput: {
           minLength: props.minLength, // Passa minLength aqui

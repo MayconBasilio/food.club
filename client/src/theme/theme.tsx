@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#BB3301", // Cor primária (vermelho, por exemplo)
+			main: "#7D0000", // Cor primária (vermelho, por exemplo)
 		},
 		secondary: {
 			main: "#00FF00", // Cor secundária (verde, por exemplo)

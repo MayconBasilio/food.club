@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-
 import "./LoginForm.css";
 import { Button } from "@mui/material";
 import GenericInput from "./GenericInput";
 import EmailInput from "./EmailInput";
-import logo from "../assets/Logo.svg";
-// import axios from "axios";
+import imagemFundo from "../assets/eating a variety of foods-bro.svg";
+import { useAuthStore } from "../stores/authStores";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+interface IProps {
+	screenSize: number;
+}
+
+const LoginForm = ({ screenSize }: IProps) => {
 	const [password, setPassword] = useState<string>("");
+	const { login, user, isAuthenticated } = useAuthStore();
+	const navigate = useNavigate();
 
+	//#region Métodos
+
+	// Função para mudar a senha
 	function handlePasswordChange(
 		setPassword: React.Dispatch<React.SetStateAction<string>>
 	) {
@@ -18,6 +27,7 @@ const LoginForm = () => {
 			setPassword(value);
 		};
 	}
+
 	async function handleSubmit(
 		event: React.FormEvent<HTMLFormElement>
 	): Promise<void> {
@@ -29,49 +39,64 @@ const LoginForm = () => {
 			password: formData.get("password"),
 		};
 
-		// const response = await axios.get("http://localhost:5000/api/auth/check-auth", {
-		// 	withCredentials: true,
-		// });
+		await login(data.email as string, data.password as string);
 
-		console.log(data);
+		// Redireciona para a página inicial após login
+		if (isAuthenticated) {
+			navigate("/inicio");
+		}
+	}
+
+	//#endregion
+
+	if (isAuthenticated && user) {
+		navigate("/inicio");
 	}
 
 	return (
-		<div id="loginForm">
-			<div className="logo">
-				<img src={logo} alt="logo da empresa" />
-			</div>
-			<form onSubmit={handleSubmit} className="form-principal">
-				<h1>Entrar</h1>
-				<EmailInput
-					name="email"
-					placeholder="Ex: sara@gmail.com"
-					labelText="Email"
-					required
-				/>
-				<GenericInput
-					minLength={6}
-					type="password"
-					placeholder="Digite a sua senha"
-					labelText="Digite a sua senha"
-					name="password"
-					value={password}
-					onChange={handlePasswordChange(setPassword)}
-				/>
-				<Button variant="contained" color="primary" type="submit">
-					Entrar
-				</Button>
+		<div className="form-img">
+			<div id="loginForm">
+				<form onSubmit={handleSubmit} className="form-principal">
+					<div className="tittle">
+						<h1>Bem vindo de volta</h1>
+						<p>Entrar na sua conta</p>
+					</div>
+					<div className="form-group">
+						<EmailInput
+							name="email"
+							placeholder="Ex: sara@gmail.com"
+							labelText="Email"
+							required
+						/>
+						<span className="error-message">Error message</span>
+					</div>
+					<div className="form-group">
+						<GenericInput
+							minLength={6}
+							type="password"
+							placeholder="Digite a sua senha"
+							labelText="Digite a sua senha"
+							name="password"
+							value={password}
+							onChange={handlePasswordChange(setPassword)}
+						/>
+						<span className="error-message">Error message</span>
+					</div>
+					<Button variant="contained" color="primary" type="submit">
+						Entrar
+					</Button>
 
-				<Button
-					href="/cadastro"
-					id="btn-cadastro"
-					variant="contained"
-					color="inherit"
-				>
-					Cadastrar
-				</Button>
-				<span>Esqueci a senha</span>
-			</form>
+					<span className="link-cadastro">
+						Não tem conta? <a href="/cadastro">Cadastre-se agora</a>
+					</span>
+				</form>
+			</div>
+
+			{screenSize > 800 && (
+				<div className="imagem-fundo">
+					<img src={imagemFundo} alt="logo da empresa" />
+				</div>
+			)}
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
-import { IEmployee, IRestaurant } from "../../src/models/interfaces/interfaces";
-import { User } from "../../src/models/User";
+import { IEmployee, IRestaurant } from "../models/interfaces/interfaces";
+import { User } from "../models/User";
 import { isEmail, isValidCEP, isValidCNPJ } from "./helpers";
-import { ICompany } from "../../src/models/interfaces/interfaces";
+import { ICompany } from "./../models/interfaces/interfaces";
 
 export const validateEmployeeData = async (userData: IEmployee) => {
 	if (!userData.email) {

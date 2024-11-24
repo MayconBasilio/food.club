@@ -3,6 +3,7 @@ import {
 	businessSignup,
 	checkAuth,
 	employeeSignup,
+	getIsEmailAvailable,
 	login,
 	logout,
 } from "../controllers/auth.controller";
@@ -15,5 +16,6 @@ router.post("/emsignup", employeeSignup);
 router.post("/login", login);
 router.get("/check-auth", verifyToken, checkAuth);
 router.post("/logout", logout);
+router.post("/email", getIsEmailAvailable);
 
 export default router;
