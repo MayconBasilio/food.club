@@ -1,4 +1,4 @@
-import { employeesFoto } from '../data/mockData'
+/*import { employeesFoto } from '../data/mockData'
 
 interface IProps {
     image: object[];
@@ -13,3 +13,4 @@ export const MappingImage = ({image}:IProps) => {
     </div>
     )
 }
+*/
