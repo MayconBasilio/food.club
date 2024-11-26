@@ -8,7 +8,17 @@ const CompanyOrderSchema = new mongoose.Schema({
 		{ type: mongoose.Schema.Types.ObjectId, ref: "IndividualOrder" },
 	],
 	createdAt: { type: Date, default: Date.now },
-	status: { type: OrderStatus, default: OrderStatus.PENDING },
+	status: {
+		type: String,
+		enum: Object.values(OrderStatus),
+		default: OrderStatus.PENDING,
+	},
+	restaurant: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Restaurant",
+		required: true,
+	},
+	code: { type: String, required: true },
 });
 
 export const CompanyOrder = mongoose.model<ICompanyOrder>(

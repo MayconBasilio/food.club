@@ -1,6 +1,6 @@
 export const howItWorkCardsInfo = [
 	{
-		iconAddress: "src/assets/how-it-work-company-icon.png",
+		iconAddress: "/assets/how-it-work-company-icon.png",
 		Text:
 			"Nosso papel é simplificar a alimentação corporativa para empresas de todos os tamanhos. Oferecemos uma plataforma intuitiva onde empresas podem selecionar refeições deliciosas de uma variedade de restaurantes locais, garantindo que seus funcionários tenham opções saborosas e saudáveis todos os dias.",
 		altText:
@@ -8,14 +8,14 @@ export const howItWorkCardsInfo = [
 		title: "Empresas",
 	},
 	{
-		iconAddress: "src/assets/how-it-work-chef-icon.png",
+		iconAddress: "/assets/how-it-work-chef-icon.png",
 		Text:
 			"Junte-se a nós para expandir seu alcance e aumentar sua base de clientes! Ao se cadastrar em nossa plataforma, seu restaurante terá a oportunidade de fornecer refeições saborosas para empresas locais, alcançando um novo público e aumentando suas vendas. Aumente sua visibilidade e torne-se a escolha preferida para alimentação corporativa na região.",
 		altText: "Ícone de chefe de cozinha usando chapéu e uniforme.",
 		title: "Restaurantes",
 	},
 	{
-		iconAddress: "src/assets/how-it-work-employees-icon.png",
+		iconAddress: "/assets/how-it-work-employees-icon.png",
 		Text:
 			"Somos o elo entre empresas que buscam fornecer refeições para seus funcionários e restaurantes que desejam expandir seus negócios. Nossa plataforma oferece uma interface eficiente para que empresas escolham entre uma variedade de opções de cardápio de restaurantes locais, garantindo uma experiência gastronômica de qualidade para seus funcionários, enquanto os restaurantes aumentam suas vendas e visibilidade.",
 		altText:
@@ -23,7 +23,7 @@ export const howItWorkCardsInfo = [
 		title: "Colaboradores",
 	},
 	{
-		iconAddress: "src/assets/how-it-work-transportation-icon.png",
+		iconAddress: "/assets/how-it-work-transportation-icon.png",
 		Text:
 			"Contamos com uma rede de transporte confiável e eficiente para entregar as refeições diretamente do restaurante até a empresa. Com parceiros como Uber Flash, 99 Entrega, e uma equipe de motoboys e carros próprios, garantimos que as refeições cheguem frescas e pontualmente, proporcionando uma experiência de entrega impecável para nossos clientes.",
 		altText:
@@ -97,39 +97,39 @@ export const ratings = [
 
 export const employeesFoto = [
 	{
-		img01: "../assets/img-employee/image 8.png"
+		img01: "../assets/img-employee/image 8.png",
 	},
 	{
-		img02: "../assets/img-employee/image 9.png"
+		img02: "../assets/img-employee/image 9.png",
 	},
 	{
-		img03: "../assets/img-employee/image 10.png"
+		img03: "../assets/img-employee/image 10.png",
 	},
 	{
-		img04: "../assets/img-employee/image 11.png"
+		img04: "../assets/img-employee/image 11.png",
 	},
 	{
-		img05: "../assets/img-employee/image 13.png"
+		img05: "../assets/img-employee/image 13.png",
 	},
 	{
-		img06: "../assets/img-employee/image 14.png"
+		img06: "../assets/img-employee/image 14.png",
 	},
 	{
-		img07: "../assets/img-employee/image 15.png"
+		img07: "../assets/img-employee/image 15.png",
 	},
 	{
-		img08: "../assets/img-employee/image 16.png"
+		img08: "../assets/img-employee/image 16.png",
 	},
 	{
-		img09: "../assets/img-employee/image 17.png"
+		img09: "../assets/img-employee/image 17.png",
 	},
 	{
-		img10: "../assets/img-employee/image 18.png"
+		img10: "../assets/img-employee/image 18.png",
 	},
 	{
-		img11: "../assets/img-employee/image 19.png"
+		img11: "../assets/img-employee/image 19.png",
 	},
 	{
-		img12: "../assets/img-employee/image 20.png"
-	}
-]
+		img12: "../assets/img-employee/image 20.png",
+	},
+];

@@ -1,5 +1,5 @@
 export interface iRating {
-	stars: number;
+	rating: number;
 	text: string;
 	userName: string;
 }

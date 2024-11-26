@@ -13,12 +13,9 @@ const useCheckAuth = (redirectIfUnauthenticated: string = "/login") => {
 
 			// Obtém o estado diretamente após a atualização
 			const { isAuthenticated, user } = useAuthStore.getState();
-			console.log("isAuthenticated", isAuthenticated, "user", user);
 
 			if (!isAuthenticated || !user) {
-				navigate(redirectIfUnauthenticated, { replace: true });
-			} else {
-				navigate("/inicio", { replace: true });
+				navigate("/login", { replace: true });
 			}
 		};
 

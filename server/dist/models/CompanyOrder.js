@@ -12,6 +12,16 @@ const CompanyOrderSchema = new mongoose_1.default.Schema({
         { type: mongoose_1.default.Schema.Types.ObjectId, ref: "IndividualOrder" },
     ],
     createdAt: { type: Date, default: Date.now },
-    status: { type: enums_1.OrderStatus, default: enums_1.OrderStatus.PENDING },
+    status: {
+        type: String,
+        enum: Object.values(enums_1.OrderStatus),
+        default: enums_1.OrderStatus.PENDING,
+    },
+    restaurant: {
+        type: mongoose_1.default.Schema.Types.ObjectId,
+        ref: "Restaurant",
+        required: true,
+    },
+    code: { type: String, required: true },
 });
 exports.CompanyOrder = mongoose_1.default.model("CompanyOrder", CompanyOrderSchema);

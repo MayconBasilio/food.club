@@ -7,13 +7,16 @@ export interface ICompanyOrder {
 	collaboratorsOrders: Types.ObjectId[];
 	createdAt: Date;
 	status: OrderStatus;
+	restaurant: Types.ObjectId;
 }
 
 export interface IIndividualOrder {
-	quantity: number;
-	dish: Types.ObjectId;
-	employee: Types.ObjectId;
-	companyOrder: Types.ObjectId;
+	dishes: {
+		dishId: Types.ObjectId; // ID do prato (referência para o modelo Dish)
+		quantity: number; // Quantidade do prato
+	}[];
+	employee: Types.ObjectId; // Referência para o Employee (quem fez o pedido)
+	companyOrder: Types.ObjectId; // Referência para o CompanyOrder (o pedido da empresa)
 }
 
 export interface IUser extends Document {
@@ -26,6 +29,19 @@ export interface IUser extends Document {
 	//todo - keep or not ?
 }
 
+export interface IDish {
+	_id: Types.ObjectId;
+	name: string;
+	description: string;
+	price: number;
+	image: string;
+	ratings: {
+		userId: Types.ObjectId;
+		rating: number;
+	}[];
+}
+
+// Interface para o restaurante
 export interface IRestaurant extends IUser {
 	name: string;
 	cnpj: string;
@@ -33,13 +49,6 @@ export interface IRestaurant extends IUser {
 	number: string;
 	dishes: IDish[];
 	companyOrders: Types.ObjectId[];
-}
-
-export interface IDish {
-	name: string;
-	description: string; // 80 characters min
-	price: number; //	> 0 and not null
-	restaurant: Types.ObjectId;
 }
 
 export interface IEmployee extends IUser {

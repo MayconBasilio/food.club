@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getIsEmailAvailable = exports.checkAuth = exports.businessSignup = exports.employeeSignup = exports.login = exports.logout = void 0;
+exports.listUsers = exports.getIsEmailAvailable = exports.checkAuth = exports.businessSignup = exports.employeeSignup = exports.login = exports.logout = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const User_1 = require("../models/User");
@@ -13,9 +13,15 @@ const enums_1 = require("../models/enums/enums");
 const Employee_1 = require("../models/Employee");
 const verifyToken_1 = require("../middleware/verifyToken");
 const generateTokenAndSetCookie_1 = require("../utils/generateTokenAndSetCookie");
+const Company_1 = require("../models/Company");
 //#endregion
 const logout = async (req, res) => {
-    res.clearCookie("fctoken");
+    res.clearCookie("fctoken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        path: "/",
+    });
     return res.status(200).json({ success: true, message: "Logout efetuado." });
 };
 exports.logout = logout;
@@ -98,7 +104,7 @@ const businessSignup = async (req, res) => {
                 .json({ success: true, message: "Restaurante Cadastrado." });
         }
         else if (userData.userType === enums_1.UserType.COMPANY) {
-            const user = new Restaurant_1.Restaurant(userData);
+            const user = new Company_1.Company(userData);
             await user.save();
             (0, generateTokenAndSetCookie_1.generateTokenAndSetCookie)(res, user._id.toString());
             return res
@@ -122,6 +128,7 @@ const checkAuth = async (req, res) => {
     }
     const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
     const user = await User_1.User.findById(decoded.userId);
+    console.log(user);
     if (!user) {
         res.clearCookie("fctoken");
         res
@@ -155,3 +162,16 @@ const getIsEmailAvailable = async (req, res) => {
     }
 };
 exports.getIsEmailAvailable = getIsEmailAvailable;
+const listUsers = async (req, res) => {
+    try {
+        const users = await User_1.User.find();
+        return res.status(200).json({ success: true, data: users });
+    }
+    catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "algo deu errado ao listar os usuários." + error,
+        });
+    }
+};
+exports.listUsers = listUsers;

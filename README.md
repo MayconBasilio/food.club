@@ -20,9 +20,11 @@ Criar uma plataforma que facilite a comunicação entre restaurantes e empresas,
 
 **Visibilidade para Restaurantes**: Plataforma serve como vitrine online para restaurantes expandirem sua base de clientes.
 
-### **Prototipo e Documentação**
+### 🛠 **Prototipo e Documentação**
 
 No planejamento do projeto, foram criados wireframes e mockups para definir o layout da aplicação. Após aprovação, esses designs foram transformados em um protótipo interativo desenvolvido em React.
+
+https://food-club-9b38.vercel.app/
 
 As documentações importantes, como fluxos de dados, diagramas de classes e casos de uso, modelagem do banco de dados e arquitetura do sistema, foram reunidas em um guia PDF disponibilizado a baixo, para facilitar o entendimento geral do projeto.
 
@@ -69,6 +71,19 @@ As documentações importantes, como fluxos de dados, diagramas de classes e cas
 **Lista de Chamada**: Lista de chamada para seleção de opções do menu do restaurante escolhido.
 
 **Opção de Prazos Maiores**: Opção de fechar prazos maiores com o mesmo restaurante para garantir preços melhores.
+
+### 💻 **Tecnologias**
+
+As ferramentas, linguagens, bibliotecas e tecnologias utilizadas foram listadas a baixo:
+
+- Figma 
+- Typescript 
+- HTML 
+- CSS 
+- React 
+- Node  
+- MongoDB 
+- GitHub 
 
 ## 👥 Equipe
 

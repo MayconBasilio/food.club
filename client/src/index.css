@@ -27,3 +27,35 @@ main {
 	flex-direction: column;
 	min-height: 100vh; /* Isso garante que ele ocupe pelo menos a altura total da viewport */
 }
+
+/* Container principal */
+.main-container {
+	display: flex;
+	height: calc(100vh - 60px);
+	width: 100vw;
+	margin-top: 0;
+
+	box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+	.main-container {
+		margin-left: 60px; /* Espaço reservado para a navbar lateral */
+		height: 100vh;
+		width: calc(100vw - 60px);
+		padding: 0 60px;
+	}
+}
+@media (min-width: 900px) {
+	.main-container {
+		margin-left: 200px; /* Espaço reservado para a navbar lateral */
+		height: 100vh;
+		width: calc(100vw - 200px);
+	}
+}
+
+@media (min-width: 1600px) {
+	.main-container {
+		padding: 0 200px;
+	}
+}

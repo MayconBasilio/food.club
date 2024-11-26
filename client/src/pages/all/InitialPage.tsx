@@ -12,7 +12,7 @@ const InitialPage = () => {
 		<main>
 			<div className="hero">
 				<img
-					src="src/assets/Logo.svg"
+					src="/assets/Logo.svg"
 					alt="Logotipo da empresa com um chapéu de chef e uma gravata borboleta sobre um paletó, simbolizando serviços de culinária e hospitalidade."
 				/>
 				<div className="hero-info-container">

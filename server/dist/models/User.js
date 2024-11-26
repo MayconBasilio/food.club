@@ -15,6 +15,7 @@ const UserSchema = new mongoose_1.default.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userType: { type: String, enum: Object.values(enums_1.UserType), required: true },
+    image: { type: String, default: null },
     verificationToken: { type: String, default: null },
     verificationTokenExpireAt: {
         type: Date,

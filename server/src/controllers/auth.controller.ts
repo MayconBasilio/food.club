@@ -15,11 +15,17 @@ import { UserType } from "../models/enums/enums";
 import { Employee } from "../models/Employee";
 import { initialUSerToken as setInitialUserToken } from "../middleware/verifyToken";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie";
+import { Company } from "../models/Company";
 
 //#endregion
 
 export const logout = async (req: Request, res: Response): Promise<any> => {
-	res.clearCookie("fctoken");
+	res.clearCookie("fctoken", {
+		httpOnly: true,
+		secure: process.env.NODE_ENV === "production",
+		sameSite: "strict",
+		path: "/",
+	});
 	return res.status(200).json({ success: true, message: "Logout efetuado." });
 };
 
@@ -121,7 +127,7 @@ export const businessSignup = async (
 				.status(201)
 				.json({ success: true, message: "Restaurante Cadastrado." });
 		} else if (userData.userType === UserType.COMPANY) {
-			const user = new Restaurant(userData);
+			const user = new Company(userData);
 			await user.save();
 			generateTokenAndSetCookie(res, user._id.toString());
 
@@ -153,6 +159,8 @@ export const checkAuth = async (req: Request, res: Response) => {
 	) as jwt.JwtPayload;
 
 	const user = await User.findById(decoded.userId);
+
+	console.log(user);
 
 	if (!user) {
 		res.clearCookie("fctoken");
@@ -188,5 +196,18 @@ export const getIsEmailAvailable = async (
 			.status(500)
 			.json({ available: false, message: "Erro interno do servidor." });
 		return;
+	}
+};
+
+export const listUsers = async (req: Request, res: Response): Promise<any> => {
+	try {
+		const users = await User.find();
+
+		return res.status(200).json({ success: true, data: users });
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "algo deu errado ao listar os usuários." + error,
+		});
 	}
 };

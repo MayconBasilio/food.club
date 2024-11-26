@@ -1,15 +1,11 @@
-interface IUser {
-	name: string;
+import { UserType } from "../enums/enums";
+
+export interface IUser {
+	_id: string;
 	email: string;
 	password: string;
-	role: string;
-	birthday: string;
-	company: string;
-	cnpj: string;
-	cep: string;
-	street: string;
-	city: string;
-	state: string;
-	complement: string;
-	number: string;
+	userType: UserType;
+	verificationToken?: string | null;
+	verificationTokenExpireAt?: Date | null;
+	lastLogin?: Date | null;
 }
