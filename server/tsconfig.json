@@ -107,7 +107,7 @@
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
-	"include": ["src/swagger-output.json", "src/**/*"],
+	"include": ["src/swagger-output.json", "src/**/*", "server/**/*.ts"],
 	"exclude": ["node_modules"],
 	"lib": ["es2015"],
 	"typeRoots": ["node_modules/@types"],
