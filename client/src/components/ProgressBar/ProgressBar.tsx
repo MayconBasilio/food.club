@@ -1,3 +1,3 @@
-const ProgressBar = (props: Props) => {
+/*const ProgressBar = (props: Props) => {
 	return <div className="progress-bar"></div>;
-};
+};*/
