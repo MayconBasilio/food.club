@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-	cors({
+	cors(/*{
 		origin: (origin, callback) => {
 			// Lista de origens permitidas
 			const allowedOrigins = [
@@ -30,7 +30,7 @@ app.use(
 			}
 		},
 		credentials: true, // Permitir cookies
-	})
+	}*/)
 );
 
 app.use(cookieParser());
