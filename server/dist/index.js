@@ -17,23 +17,23 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use((0, cors_1.default)({
+app.use((0, cors_1.default)( /*{
     origin: (origin, callback) => {
         // Lista de origens permitidas
         const allowedOrigins = [
             "http://localhost:5173",
             "https://foodclub2.netlify.app",
         ];
+
         // Permitir requisições sem 'origin' (como ferramentas locais como Postman)
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
-        }
-        else {
+        } else {
             callback(new Error("Não permitido pela política de CORS"));
         }
     },
     credentials: true, // Permitir cookies
-}));
+}*/));
 app.use((0, cookie_parser_1.default)());
 const PORT = process.env.PORT || 3000;
 //Rotas

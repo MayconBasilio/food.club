@@ -1,35 +1,51 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IndividualOrder = void 0;
-const mongoose_1 = __importDefault(require("mongoose"));
-const IndividualOrderSchema = new mongoose_1.default.Schema({
-    dishes: {
-        type: [
-            {
-                dishId: {
-                    type: mongoose_1.default.Schema.Types.ObjectId,
-                    ref: "Dish",
-                    required: true,
-                },
-                quantity: { type: Number, required: true },
-            },
-        ],
+const mongoose_1 = __importStar(require("mongoose"));
+// Definindo o schema do IndividualOrder
+const individualOrderSchema = new mongoose_1.Schema({
+    companyOrder: {
+        type: mongoose_1.default.Schema.Types.ObjectId,
+        ref: "CompanyOrder",
         required: true,
-        default: [],
     },
     employee: {
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "Employee",
         required: true,
     },
-    companyOrder: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: "CompanyOrder",
-        required: true,
-    },
+    dishes: [
+        {
+            dishId: {
+                type: mongoose_1.default.Schema.Types.ObjectId,
+                ref: "Dish",
+                required: true,
+            },
+            quantity: { type: Number, required: true },
+        },
+    ],
 });
-const IndividualOrder = mongoose_1.default.model("IndividualOrder", IndividualOrderSchema);
-exports.IndividualOrder = IndividualOrder;
+const IndividualOrder = mongoose_1.default.model("IndividualOrder", individualOrderSchema);
+exports.default = IndividualOrder;

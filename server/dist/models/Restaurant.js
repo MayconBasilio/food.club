@@ -27,30 +27,17 @@ exports.Restaurant = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const User_1 = require("./User");
 const enums_1 = require("./enums/enums");
-const DishRatingSchema = new mongoose_1.Schema({
-    userId: { type: String, required: true },
-    rating: { type: Number, required: true, max: 5 },
-});
-const DishSchema = new mongoose_1.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
-    image: { type: String, default: null },
-    ratings: {
-        type: [DishRatingSchema],
-        default: [],
-    },
-}, { _id: true });
-// Schema do Restaurante
 const RestaurantSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     cnpj: { type: String, required: true },
     cep: { type: String, required: true },
     number: { type: String, required: true },
-    dishes: {
-        type: [DishSchema], // Array de subdocumentos embutidos
-        default: [], // Inicia como um array vazio
-    },
+    dishes: [
+        {
+            type: mongoose_1.default.Schema.Types.ObjectId,
+            ref: "Dish",
+        },
+    ],
     companyOrders: [
         {
             type: mongoose_1.default.Schema.Types.ObjectId,
@@ -65,5 +52,4 @@ const RestaurantSchema = new mongoose_1.Schema({
         default: enums_1.UserType.RESTAURANT,
     },
 });
-// Modelo de Restaurante como discriminador do User
 exports.Restaurant = User_1.User.discriminator("Restaurant", RestaurantSchema);

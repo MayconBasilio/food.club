@@ -8,4 +8,5 @@ const employee_controller_1 = require("../controllers/employee.controller");
 const router = express_1.default.Router();
 router.post("/:employeeId/order/:companyOrderId", employee_controller_1.createIndividualOrder);
 router.get("/list", employee_controller_1.getEmployees);
+router.get("/:companyOrderId/individualorders", employee_controller_1.getIndividualOrdersByCompanyOrder);
 exports.default = router;

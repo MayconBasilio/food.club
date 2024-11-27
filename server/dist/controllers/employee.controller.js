@@ -1,9 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getEmployees = exports.createIndividualOrder = exports.getEmployeesByCompany = void 0;
+exports.getIndividualOrdersByCompanyOrder = exports.getEmployees = exports.createIndividualOrder = exports.getEmployeesByCompany = void 0;
 const Employee_1 = require("../models/Employee");
-const IndividualOrder_1 = require("../models/IndividualOrder");
 const CompanyOrder_1 = require("../models/CompanyOrder");
+const IndividualOrder_1 = __importDefault(require("../models/IndividualOrder"));
 const getEmployeesByCompany = async (req, res) => {
     try {
         const { companyId } = req.params;
@@ -61,11 +64,13 @@ const createIndividualOrder = async (req, res) => {
                 message: "Funcionário nao pertence a empresa do pedido",
             });
         }
-        const individualOrder = new IndividualOrder_1.IndividualOrder({
+        const individualOrder = new IndividualOrder_1.default({
             employee: employeeId,
             companyOrder: companyOrderId,
             dishes,
         });
+        companyOrder.collaboratorsOrders.push(individualOrder._id);
+        await companyOrder.save();
         await individualOrder.save();
         return res.status(201).json({
             success: true,
@@ -96,3 +101,25 @@ const getEmployees = async (req, res) => {
     }
 };
 exports.getEmployees = getEmployees;
+const getIndividualOrdersByCompanyOrder = async (req, res) => {
+    try {
+        const { companyOrderId } = req.params;
+        const individualOrders = await IndividualOrder_1.default.find({
+            companyOrder: companyOrderId,
+        }).populate({
+            path: "dishes.dishId",
+            select: "-__v",
+        });
+        return res.status(200).json({ success: true, data: individualOrders });
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            return res.status(500).json({
+                success: false,
+                message: "Algo deu errado ao buscar os pedidos individuais",
+                error: error.message,
+            });
+        }
+    }
+};
+exports.getIndividualOrdersByCompanyOrder = getIndividualOrdersByCompanyOrder;

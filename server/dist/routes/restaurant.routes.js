@@ -9,7 +9,7 @@ const router = express_1.default.Router();
 router.post("/dish", restaurant_controller_1.createDish);
 router.delete("/dish/:restaurantId/:dishId", restaurant_controller_1.deleteDish);
 router.patch("/dish/:restaurantId/:dishId", restaurant_controller_1.updateDish);
-router.get("/dishes", restaurant_controller_1.getDishes);
+router.get("/:restaurantId/dishes", restaurant_controller_1.getDishes);
 router.get("/list", restaurant_controller_1.getRestaurants);
 router.get("/:id", restaurant_controller_1.getRestaurant);
 router.post("/:restaurantId/:dishId/rating", restaurant_controller_1.ratingDish);
