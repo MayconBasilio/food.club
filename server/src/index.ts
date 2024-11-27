@@ -21,7 +21,7 @@ app.use(
 				"http://localhost:5173",
 				"https://foodclub2.netlify.app",
 			];
-
+np
 			// Permitir requisições sem 'origin' (como ferramentas locais como Postman)
 			if (!origin || allowedOrigins.includes(origin)) {
 				callback(null, true);
